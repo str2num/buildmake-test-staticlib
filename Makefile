@@ -25,7 +25,7 @@ DEP_INCPATH=
 
 
 #BUILDMAKE UUID
-BUILDMAKE_MD5=80d5c12fd92ed6411cc08450bcfc8b4e  BUILDMAKE
+BUILDMAKE_MD5=dba7550fc1245903ea901f6f4ef34ff2  BUILDMAKE
 
 
 .PHONY:all
@@ -46,7 +46,7 @@ clean:
 	@echo "[[1;32;40mBUILDMAKE:BUILD[0m][Target:'[1;32;40mclean[0m']"
 	rm -rf libmath.a
 	rm -rf ./output/lib/libmath.a
-	rm -rf ./output/include/math.h
+	rm -rf ./output/include/math/math.h
 	rm -rf src/math_math.o
 
 .PHONY:dist
@@ -72,8 +72,8 @@ libmath.a:src/math_math.o \
 	ar crs libmath.a src/math_math.o
 	mkdir -p ./output/lib
 	cp -f --link libmath.a ./output/lib
-	mkdir -p ./output/include
-	cp -f --link ./src/math.h ./output/include
+	mkdir -p ./output/include/math
+	cp -f --link ./src/math.h ./output/include/math
 
 src/math_math.o:src/math.cpp \
   src/math.h

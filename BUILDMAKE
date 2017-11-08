@@ -2,7 +2,10 @@
 #coding: UTF-8
 
 # Work root
-WORKROOT('./')
+WORKROOT('../../')
+
+# buildmake bin path
+BUILDMAKE_BIN_PATH('~/opensource/buildmake/buildmake')
 
 # Using hard link copy.
 COPY_USING_HARD_LINK(True)
@@ -20,18 +23,30 @@ CXXFLAGS('-g -pipe -W -Wall -fPIC')
 INCPATHS('. ./include ./output ./output/include ./src')
 
 # Using libs
-#LIBS('./libstatic-lib-simple.a')
+#LIBS('./libbuildmake-test-staticlib.a')
+
+# Default git domain
+#DEFAULT_GIT_DOMAIN('https://github.com/')
+
+# Depend libs in git
+# Using default git domain
+#DEP_CONFIGS('group_name', 'project_name', 'repository')
+# Using local git url
+#DEP_CONFIGS('group_name', 'project_name', 'https://mygit.com/repository')
 
 # Link params
 LDFLAGS('-lpthread -lcrypto -lrt')
+
+# Default include parent dir for headers file
+DEFAULT_LIB_INCLUDE_DIR('math')
 
 user_sources=GLOB('./src/*.cpp')
 user_headers=GLOB('./src/*.h')
 
 # Generate an application 
-#Application('static-lib-simple', Sources(user_sources))
+#Application('buildmake-test-staticlib', Sources(user_sources))
 # Generate a static library
 StaticLibrary('math', Sources(user_sources), HeaderFiles(user_headers))
 # Generate a share library
-#SharedLibrary('static-lib-simple', Sources(user_sources), HeaderFiles(user_headers))
+#SharedLibrary('buildmake-test-staticlib', Sources(user_sources), HeaderFiles(user_headers))
 
